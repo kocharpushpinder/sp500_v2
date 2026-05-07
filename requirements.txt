@@ -1,0 +1,23 @@
+# S&P 500 Trading Agent — Phase 1 Dependencies
+# Install with: pip install -r requirements.txt
+# No API keys required for Phase 1.
+
+# Core data
+yfinance>=0.2.40
+pandas>=2.2.0
+numpy>=1.26.0
+requests>=2.31.0
+lxml>=5.0.0               # required by pandas.read_html (Wikipedia ticker fetch)
+
+# News sentiment
+vaderSentiment>=3.3.2
+feedparser>=6.0.11        # Google News RSS parsing
+
+# Utilities
+python-dateutil>=2.9.0
+pytz>=2024.1
+
+# Phase 2+ (install now, use later)
+lightgbm>=4.3.0
+scikit-learn>=1.4.0
+shap>=0.45.0

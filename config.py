@@ -111,7 +111,7 @@ KELLY_FRACTION      = 0.25      # quarter Kelly sizing
 # Exit rules
 STOP_LOSS_PCT       = 0.05      # 5% hard stop loss
 TAKE_PROFIT_PCT     = 0.15      # 15% take profit
-HOLD_DAYS           = 10        # max hold = label horizon (then re-evaluate)
+HOLD_DAYS           = 30        # max hold = label horizon (then re-evaluate)
 
 # Trading costs (Wealthsimple)
 COMMISSION          = 0.0       # $0 commission

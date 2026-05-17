@@ -189,6 +189,8 @@ def _add_cross_sectional_features(df_all: pd.DataFrame) -> pd.DataFrame:
     # Compute lagged returns for ranking (these are already in the feature set
     # but we recompute cleanly here to avoid any ordering issues)
     ohlcv = pd.read_csv(RAW_DIR / "combined_ohlcv.csv", parse_dates=["date"])
+    ohlcv["date"] = pd.to_datetime(ohlcv["date"], errors="coerce").dt.normalize()
+    ohlcv = ohlcv.dropna(subset=["date"])
     ohlcv = ohlcv.sort_values(["ticker", "date"])
 
     # Past 5d and 20d returns (backward-looking — safe)
@@ -203,10 +205,16 @@ def _add_cross_sectional_features(df_all: pd.DataFrame) -> pd.DataFrame:
 
     rank_cols = ["date", "ticker", "cs_rank_ret5", "cs_rank_ret20", "cs_rank_vol5"]
     ranks = ohlcv[rank_cols].dropna()
+    ranks["date"] = pd.to_datetime(ranks["date"], errors="coerce").dt.normalize()
+    ranks = ranks.dropna(subset=["date"])
 
     # Momentum quartile flags
     ranks["top_momentum"] = (ranks["cs_rank_ret5"] >= 0.75).astype(np.int8)
     ranks["bot_momentum"] = (ranks["cs_rank_ret5"] <= 0.25).astype(np.int8)
+
+    df_all = df_all.copy()
+    df_all["date"] = pd.to_datetime(df_all["date"], errors="coerce").dt.normalize()
+    df_all = df_all.dropna(subset=["date"])
 
     df_all = df_all.merge(
         ranks[["date", "ticker", "cs_rank_ret5", "cs_rank_ret20",

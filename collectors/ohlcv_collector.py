@@ -171,6 +171,9 @@ def update_ticker(ticker: str) -> dict:
 
         df_existing = load_or_empty(out_path, parse_dates=["date"])
         df_combined = pd.concat([df_existing, df_new], ignore_index=True)
+        # Robust to mixed CSV dtypes: force one comparable date dtype before sort.
+        df_combined["date"] = pd.to_datetime(df_combined["date"], errors="coerce").dt.normalize()
+        df_combined = df_combined.dropna(subset=["date"])
         df_combined = df_combined.drop_duplicates(subset=["date"]).sort_values("date")
         save_csv(df_combined, out_path, index=False)
         return {"ticker": ticker, "rows": len(df_new), "status": "ok"}

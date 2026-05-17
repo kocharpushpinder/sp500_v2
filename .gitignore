@@ -3,5 +3,4 @@ __pycache__/
 backtest/
 logs/
 paper_trading/
-models/
 data/

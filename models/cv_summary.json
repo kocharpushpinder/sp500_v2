@@ -1,0 +1,45 @@
+{
+  "n_folds": 6,
+  "mean_dir_acc": 0.4924801215408345,
+  "std_dir_acc": 0.019505278170128558,
+  "mean_thresh_acc": 0.44232080162114484,
+  "best_threshold": 0.45,
+  "folds": [
+    {
+      "test_year": 2019,
+      "dir_acc": 0.47003377761548293,
+      "thresh_acc": 0.44308035714285715,
+      "best_threshold": 0.45
+    },
+    {
+      "test_year": 2020,
+      "dir_acc": 0.4953690510116842,
+      "thresh_acc": 0.45063687869168645,
+      "best_threshold": 0.5
+    },
+    {
+      "test_year": 2021,
+      "dir_acc": 0.46859646510836506,
+      "thresh_acc": 0.4428729281767956,
+      "best_threshold": 0.45
+    },
+    {
+      "test_year": 2022,
+      "dir_acc": 0.5235853420362852,
+      "thresh_acc": 0.4692450860229697,
+      "best_threshold": 0.45
+    },
+    {
+      "test_year": 2023,
+      "dir_acc": 0.5074939667217071,
+      "thresh_acc": 0.4236599725122567,
+      "best_threshold": 0.4
+    },
+    {
+      "test_year": 2024,
+      "dir_acc": 0.48980212675148244,
+      "thresh_acc": 0.4244295871803035,
+      "best_threshold": 0.5
+    }
+  ]
+}
